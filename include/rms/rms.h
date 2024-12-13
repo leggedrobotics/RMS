@@ -37,6 +37,8 @@ class RMS {
 public:
   RMS(mrs_lib::ParamLoader& param_loader);
   void sample(sensor_msgs::PointCloud2::Ptr& msg_inout);
+  void setLambda(float& lambda);
+  void setRMSVoxelSize(float& voxelSize);
 
   // | --------------- ROS and conversion methods --------------- |
 private:
@@ -46,7 +48,7 @@ private:
   // | ---------------- RMS variables and methods --------------- |
 private:
   size_t _K            = 10;
-  float  _lambda       = 1.0f;
+  float  _lambda       = -1.0f;
   float  _voxel_input  = -1.0f;
   float  _voxel_output = -1.0f;
 

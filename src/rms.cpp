@@ -6,12 +6,27 @@ namespace rms
 
 /*//{ RMS() constructor */
 RMS::RMS(mrs_lib::ParamLoader &param_loader) {
-  _K = size_t(param_loader.loadParamReusable2<int>("K"));
-  param_loader.loadParam<float>("lambda", _lambda);
-  param_loader.loadParam<float>("voxelization/input", _voxel_input);
-  param_loader.loadParam<float>("voxelization/output", _voxel_output);
+  // _K = size_t(param_loader.loadParamReusable2<int>("K"));
+  // param_loader.loadParam<float>("lambda", _lambda);
+  // param_loader.loadParam<float>("voxelization/input", _voxel_input);
+  // param_loader.loadParam<float>("voxelization/output", _voxel_output);
+
+  _K = 10;
+  // _lambda= 0.005; //0.004
+  // _voxel_input = 0.4;
+  // _voxel_output = 0.4;
+
 }
 /*//}*/
+
+void RMS::setLambda(float& lambda) {
+  _lambda = lambda;
+}
+
+void RMS::setRMSVoxelSize(float& voxelSize) {
+  _voxel_input = voxelSize;
+  _voxel_output = voxelSize;
+}
 
 /*//{ sample() */
 void RMS::sample(sensor_msgs::PointCloud2::Ptr &msg_inout) {
